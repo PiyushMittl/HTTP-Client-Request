@@ -1,0 +1,25 @@
+package com.ituple.client.jsoup;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class JsouptTest {
+    public static void main(String[] args) throws Exception {
+
+       Connection.Response loginForm = Jsoup.connect("http://192.168.110.61/index.php")
+        .method(Connection.Method.POST)
+        .execute();
+
+       Document document = Jsoup.connect("http://192.168.110.61/index.php")
+        .data("username", "admin")
+        .data("password", "AtinAgarwal123")
+        .data("_submit_check", "1")
+        .cookies(loginForm.cookies())
+        .post();
+       
+       System.out.println(document);
+
+   }
+
+}
